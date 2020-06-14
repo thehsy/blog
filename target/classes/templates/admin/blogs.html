@@ -8,11 +8,8 @@
     <link rel="stylesheet" href="../../static/css/me.css">
 </head>
 <body>
-
-
-
 <!--导航-->
-<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui purple header item">Blog</h2>
@@ -52,7 +49,7 @@
 <br>
 
 <!--中间-->
-<div  class="m-container-small m-padded-tb-big">
+<div class="m-container-small m-padded-tb-big">
     <div class="ui container">
         <!--查询表单需要是form提交数据-->
         <form th:action="@{/admin/blogs/search}" method="post" class="ui segment form">
@@ -70,7 +67,8 @@
                         <div class="default text">分类</div>
                         <!--menu是菜单-->
                         <div class="menu">
-                            <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}"></div>
+                            <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}"
+                                 th:text="${type.name}"></div>
                         </div>
                     </div>
                 </div>
@@ -81,7 +79,9 @@
                     </div>
                 </div>
                 <div class="field">
-                    <button class="ui mini purple basic button" id="search-btn" type="submit"><i class="search icon"></i>搜索</button>
+                    <button class="ui mini purple basic button" id="search-btn" type="submit" style="height: 36px"><i
+                            class="search icon"></i>搜索
+                    </button>
                 </div>
             </div>
 
@@ -105,8 +105,10 @@
                     <td th:text="${blog.getRecommend()==1?'是':'否'}"></td>
                     <td th:text="${#dates.format(blog.getUpdateTime(),'yyyy-MM-dd')}"></td>
                     <td>
-                        <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}" class="ui mini purple basic button">编辑</a>
-                        <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" onclick="return confirm('您确定要删除吗？')" class="ui mini red basic button">删除</a>
+                        <a href="#" th:href="@{/admin/blogs/{id}/input(id=${blog.id})}"
+                           class="ui mini purple basic button">编辑</a>
+                        <a th:href="@{/admin/blogs/{id}/delete(id=${blog.id})}" onclick="return confirm('您确定要删除吗？')"
+                           class="ui mini red basic button">删除</a>
                     </td>
                 </tr>
                 </tbody>
@@ -116,12 +118,18 @@
                     <th colspan="6">
                         <div class="ui menu pagination">
                             <div class="item"><a th:href="@{/admin/blogs}">首页</a></div>
-                            <div class="item"><a th:href="@{/admin/blogs(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a></div>
-                            <div class="item"><a th:href="@{/admin/blogs(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a></div>
+                            <div class="item"><a
+                                    th:href="@{/admin/blogs(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                            </div>
+                            <div class="item"><a
+                                    th:href="@{/admin/blogs(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                            </div>
                             <div class="item"><a th:href="@{/admin/blogs(pageNum=${pageInfo.pages})}">尾页</a></div>
                         </div>
                         <div class="ui segment m-inline-block">
-                            <p >当前第<span th:text="${pageInfo.pageNum}"></span>页，总<span th:text="${pageInfo.pages}"></span>页，共<span th:text="${pageInfo.total}"></span>条记录</p>
+                            <p>当前第<span th:text="${pageInfo.pageNum}"></span>页，总<span
+                                    th:text="${pageInfo.pages}"></span>页，共<span th:text="${pageInfo.total}"></span>条记录
+                            </p>
                         </div>
                         <a th:href="@{/admin/blogs/input}" class="ui mini right floated purple basic button">新增</a>
                     </th>
@@ -152,12 +160,13 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../../static/image/footer_image.jpeg" class="ui rounded image" alt="" style="width: 110px">
+                        <img src="../../static/image/footer_image.jpeg" class="ui rounded image" alt=""
+                             style="width: 110px">
                     </div>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced " >隐私政策</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">隐私政策</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item m-text-thin">网络隐私</a>
                     <a href="#" class="item m-text-thin">用户隐私</a>
@@ -190,7 +199,7 @@
     });
 
     $('.ui.dropdown').dropdown({
-        on : 'hover'
+        on: 'hover'
     });
 
     //消息提示关闭初始化

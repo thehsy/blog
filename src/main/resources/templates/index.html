@@ -67,8 +67,8 @@
                                             <div class="item">
                                                 <img src="https://unsplash.it/100/100?image=1005"
                                                      th:src="@{${blog.avatar}}" alt="" class="ui avatar image">
-                                                <div class="content"><a href="#" th:text="${blog.nickname}"
-                                                                        class="header"></a></div>
+                                                <div class="content"><a href="#" th:href="@{/about}" target="_blank"
+                                                                        class="header"><span th:text="${blog.nickname}"></span></a></div>
                                             </div>
                                             <div class="item">
                                                 <i class="calendar icon"></i><span

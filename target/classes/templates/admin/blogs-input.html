@@ -9,11 +9,8 @@
     <link rel="stylesheet" href="../../static/css/me.css">
 </head>
 <body>
-
-
-
 <!--导航-->
-<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui purple header item">Blog</h2>
@@ -53,7 +50,7 @@
 <br>
 
 <!--中间-->
-<div  class="m-container-small m-padded-tb-big">
+<div class="m-container-small m-padded-tb-big">
     <div class="ui container">
         <!--博客整体表单-->
         <form id="blog-form" action="#" th:action="@{/admin/blogs}" method="post" class="ui form">
@@ -89,7 +86,7 @@
 - Flowchart and Sequence Diagram;
                 </textarea>
                 </div>
-                
+
             </div>
 
             <div class="two fields">
@@ -103,7 +100,8 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">java</div>
                             <div class="menu">
-                                <div th:each="type:${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}"></div>
+                                <div th:each="type:${types}" class="item" data-value="1" th:data-value="${type.id}"
+                                     th:text="${type.name}"></div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +115,8 @@
                             <i class="dropdown icon"></i>
                             <div class="text">java</div>
                             <div class="menu">
-                                <div th:each="tag : ${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}"></div>
+                                <div th:each="tag : ${tags}" class="item" data-value="1" th:data-value="${tag.id}"
+                                     th:text="${tag.name}"></div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +132,7 @@
             </div>
 
             <div class="required field">
-                <textarea name="description"  placeholder="博客描述..." maxlength="200"></textarea>
+                <textarea name="description" placeholder="博客描述..." maxlength="200"></textarea>
             </div>
 
             <div class="inline fields">
@@ -190,12 +189,13 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../../static/image/footer_image.jpeg" class="ui rounded image" alt="" style="width: 110px">
+                        <img src="../../static/image/footer_image.jpeg" class="ui rounded image" alt=""
+                             style="width: 110px">
                     </div>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced " >隐私政策</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">隐私政策</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item m-text-thin">网络隐私</a>
                     <a href="#" class="item m-text-thin">用户隐私</a>
@@ -226,21 +226,18 @@
 
 
 <script>
-
-
     function createRandomId() {
         return (new Date()).getTime();
     }
 
-
     //初始化Markdown编辑器
     var contentEditor;
-    $(function() {
+    $(function () {
         contentEditor = editormd("md-content", {
-            width   : "100%",
-            height  : 640,
-            syncScrolling : "single",
-            path    : "/lib/editormd/lib/"
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/lib/editormd/lib/"
         });
     });
 
@@ -249,7 +246,7 @@
     });
 
     $('.ui.dropdown').dropdown({
-        on : 'hover'
+        on: 'hover'
     });
 
     $('#publish-btn').click(function () {
@@ -259,32 +256,32 @@
     });
 
     $('.ui.form').form({
-        fields : {
-            title : {
+        fields: {
+            title: {
                 identifier: 'title',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '标题：请输入博客标题'
                 }]
             },
-            content : {
+            content: {
                 identifier: 'content',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '标题：请输入博客内容'
                 }]
             },
-            typeId : {
+            typeId: {
                 identifier: 'typeId',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '标题：请输入博客分类'
                 }]
             },
-            firstPicture : {
+            firstPicture: {
                 identifier: 'firstPicture',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '标题：请输入博客首图'
                 }]
             }

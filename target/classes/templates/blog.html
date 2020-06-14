@@ -16,9 +16,8 @@
     <link rel="stylesheet" href="../static/css/me.css">
 </head>
 <body>
-
 <!--导航-->
-<nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+<nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui purple header item">Blog</h2>
@@ -41,14 +40,16 @@
 </nav>
 
 <!--中间内容-->
-<div  class="m-container m-padded-tb-big m-container-small animated fadeIn">
+<div class="m-container m-padded-tb-big m-container-small animated fadeIn">
     <div class="ui container">
         <!--头部-->
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
                 <div class="item">
-                    <img src="https://unsplash.it/100/100?image=1005" th:src="${blog.avatar}" alt="" class="ui avatar image">
-                    <div class="content" ><a href="#" class="header" th:text="${blog.nickname}"></a></div>
+                    <img src="https://unsplash.it/100/100?image=1005" th:src="${blog.avatar}" alt=""
+                         class="ui avatar image">
+                    <div class="content"><a href="#" th:href="@{/about}" target="_blank"
+                                            class="header"><span th:text="${blog.nickname}"></span></a></div>
                 </div>
                 <div class="item">
                     <i class="calendar icon"></i> <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}"></span>
@@ -61,7 +62,8 @@
         <!--图片区域 attached是将头部与图片区域连接起来-->
         <div class="ui segment attached">
             <!--fluid作用是撑满segment的整个空间-->
-            <img class="ui fluid image rounded" th:src="@{${blog.firstPicture}}" src="https://rong-1257752702.cos.ap-chengdu.myqcloud.com/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/1.jpg">
+            <img class="ui fluid image rounded" th:src="@{${blog.firstPicture}}"
+                 src="https://rong-1257752702.cos.ap-chengdu.myqcloud.com/%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE/1.jpg">
         </div>
         <!--内容-->
         <div class="ui  segment attached padded">
@@ -73,7 +75,8 @@
             <h2 class="ui center aligned header" th:text="${blog.title}"></h2>
             <br>
             <!--具体内容-->
-            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large" th:utext="${blog.content}">
+            <div id="content" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+                 th:utext="${blog.content}">
             </div>
             <!--标签 pointing label 标签图片效果-->
             <div class="m-padded-lr-responsive">
@@ -95,11 +98,13 @@
                         <div class="ui images">
                             <div class="image">
                                 <!--rounded bordered 是边线和圆角-->
-                                <img class="ui image rounded bordered" th:src="@{/image/alipay.png}" src="../static/image/alipay.png" style="width: 120px">
+                                <img class="ui image rounded bordered" th:src="@{/image/alipay.png}"
+                                     src="../static/image/alipay.png" style="width: 120px">
                             </div>
                             <div class="image">
                                 <!--rounded bordered 是边线和圆角-->
-                                <img class="ui image rounded bordered" th:src="@{/image/wechatcard.PNG}" src="../static/image/wechatcard.PNG" style="width: 120px">
+                                <img class="ui image rounded bordered" th:src="@{/image/wechatcard.PNG}"
+                                     src="../static/image/wechatcard.PNG" style="width: 120px">
                             </div>
                         </div>
                     </div>
@@ -114,7 +119,7 @@
             <div class="ui middle aligned grid">
                 <!--左边11份-->
                 <div class="eleven wide column">
-                    <li>作者：<span th:text="${blog.nickname}"></span><a href="#" th:href="@{/about}" target="_blank">胡萝卜</a></li>
+                    <li>作者：<a href="#" th:href="@{/about}" target="_blank"><span th:text="${blog.nickname}"></span></a></li>
                     <li>发表时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd HH:mm')}"></span></li>
                     <li>版权声明：自由转载-非商用-非衍生-保持署名</li>
                     <li>公众号转载：请在文末添加作者微信二维码</li>
@@ -122,7 +127,8 @@
                 <!--右边5份-->
                 <div class="five wide column">
                     <!-- right floated 往右浮动-->
-                    <img src="../static/image/WeChat.png" th:src="@{/image/WeChat.png}" class="ui bordered rounded image right floated" style="width: 110px">
+                    <img src="../static/image/WeChat.png" th:src="@{/image/WeChat.png}"
+                         class="ui bordered rounded image right floated" style="width: 110px">
                 </div>
             </div>
         </div>
@@ -130,7 +136,7 @@
 
         <!--留言信息-->
         <div class="ui attached bottom segment" th:if="${blog.commentabled}">
-            <div id="comment-container"  class="ui teal segment">
+            <div id="comment-container" class="ui teal segment">
                 <div th:fragment="commentList">
                     <div class="ui threaded comments" style="max-width: 100%;">
                         <h3 class="ui dividing header">评论</h3>
@@ -139,17 +145,20 @@
                                 <img src="https://unsplash.it/100/100?image=1005" th:src="@{${comment.avatar}}">
                             </a>
                             <div class="content">
-                                <a class="author" >
+                                <a class="author">
                                     <span th:text="${comment.nickname}"></span>
                                     <!--<div class="ui mini basic teal left pointing label m-padded-mini" th:if="${comment.adminComment}">博主</div>-->
                                 </a>
                                 <div class="metadata">
-                                    <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}"></span>
+                                    <span class="date"
+                                          th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}"></span>
                                 </div>
                                 <div class="text" th:text="${comment.content}">
                                 </div>
                                 <div class="actions">
-                                    <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">回复</a>
+                                    <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                       th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}"
+                                       onclick="reply(this)">回复</a>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +186,9 @@
                             </div>
                         </div>
                         <div class="field  m-margin-bottom-small m-mobile-wide">
-                            <button id="commentpost-btn" type="submit" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                            <button id="commentpost-btn" type="submit" class="ui teal button m-mobile-wide"><i
+                                    class="edit icon"></i>发布
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -186,19 +197,19 @@
     </div>
 </div>
 
-    <!--右下角浮动的图标-->
-    <div class="m-padded m-right-bottom m-fixed">
-        <div class="ui vertical icon buttons">
-            <button type="button" class="ui purple toc button">目录</button>
-            <a href="#comment-container" class="ui purple button">留言</a>
-            <a href="#" class="ui purple icon button"><i class="chevron up icon"></i> </a>
-        </div>
+<!--右下角浮动的图标-->
+<div class="m-padded m-right-bottom m-fixed">
+    <div class="ui vertical icon buttons">
+        <button type="button" class="ui purple toc button">目录</button>
+        <a href="#comment-container" class="ui purple button">留言</a>
+        <a href="#" class="ui purple icon button"><i class="chevron up icon"></i> </a>
     </div>
-    <!--目录-->
-    <div class="ui toc-container flowing popup transition hidden" style="width: 250px">
-        <ol class="js-toc">
-        </ol>
-    </div>
+</div>
+<!--目录-->
+<div class="ui toc-container flowing popup transition hidden" style="width: 250px">
+    <ol class="js-toc">
+    </ol>
+</div>
 </div>
 
 <br>
@@ -210,12 +221,13 @@
             <div class="three wide column">
                 <div class="ui inverted link list">
                     <div class="item">
-                        <img src="../static/image/footer_image.jpeg" class="ui rounded image" alt="" style="width: 110px">
+                        <img src="../static/image/footer_image.jpeg" class="ui rounded image" alt=""
+                             style="width: 110px">
                     </div>
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header m-text-thin m-text-spaced " >隐私政策</h4>
+                <h4 class="ui inverted header m-text-thin m-text-spaced ">隐私政策</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item m-text-thin">网络隐私</a>
                     <a href="#" class="item m-text-thin">用户隐私</a>
@@ -251,9 +263,9 @@
         $('.m-item').toggleClass('m-mobile-hide');
     });
     $("#reward").popup({
-        popup : $(".pay"),
+        popup: $(".pay"),
         on: 'click',
-        position : 'bottom center'
+        position: 'bottom center'
     });
 
     tocbot.init({
@@ -266,9 +278,9 @@
     });
 
     $('.toc.button').popup({
-        popup : $(".toc-container.popup"),
+        popup: $(".toc-container.popup"),
         on: 'click',
-        position : 'left center'
+        position: 'left center'
     });
 
 
@@ -313,7 +325,6 @@
             console.log('校验失败');
         }
     });
-
 
 
     function clearContent() {
